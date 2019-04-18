@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>vue-test</title>
-  <!-- development version, includes helpful console warnings: -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="utf-8">
+<title>vue-test</title>
+<!-- development version, includes helpful console warnings: -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <h1>vue-test</h1>
-  <div id="app">
-    {{ message }}
-  </div>
-  <script src="index.js"></script>
+<h1>vue-test</h1>
+<div id="app">
+  <h2 v-bind:title="message">Introducing: {{ fullname }}</h2>
+  <p v-if="seen">{{ message }}</p>
+  <p>{{ mydetails() }}</p>
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      fullname: 'Jon Snow',
+      message: 'Hello world.',
+      seen: true
+    },
+    methods: {
+      mydetails: function () {
+        return "I am " + this.fullname + '.';
+      }
+    }
+  });
+</script>
 </body>
